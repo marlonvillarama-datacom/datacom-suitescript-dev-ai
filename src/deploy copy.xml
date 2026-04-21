@@ -1,0 +1,362 @@
+<deploy>
+    <configuration>
+        <path>~/AccountConfiguration/*</path>
+    </configuration>
+    <files>
+        <path>~/FileCabinet/*</path>
+    </files>
+    <objects>
+        <path>~/Objects/*</path>
+    </objects>
+    <translationimports>
+        <path>~/Translations/*</path>
+    </translationimports>
+    <scripts>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Business Extension/User_Event/bex_ue_transferorder_employee_redirect.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Transfer Order Employee Redirect - beforeLoad</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <scriptEvents>
+                        <scriptEvent>
+                            <eventType>BEFORE_LOAD</eventType>
+                            <recordType>transferorder</recordType>
+                        </scriptEvent>
+                    </scriptEvents>
+                </deployment>
+            </deployments>
+        </script>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Business Extension/User_Event/bex_ue_itemfulfillment_email.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Item Fulfillment Email - afterSubmit</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <scriptEvents>
+                        <scriptEvent>
+                            <eventType>AFTER_SUBMIT</eventType>
+                            <recordType>itemfulfillment</recordType>
+                        </scriptEvent>
+                    </scriptEvents>
+                    <parameters>
+                        <parameter>
+                            <id>custscript_bex_if_email_subject</id>
+                            <label>Email Subject Template</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>Item Fulfillment [tranid] - [trandate]</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_if_email_body</id>
+                            <label>Email Body Template</label>
+                            <type>TEXTAREA</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>Please find attached the item fulfillment document for transaction [tranid].
+
+Thank you!</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_if_pdf_template</id>
+                            <label>PDF Template Name</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>The name or path of the PDF template to use for rendering the item fulfillment. This template must be created in the NetSuite File Cabinet.</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_if_email_recipients</id>
+                            <label>Email Recipients (Fallback)</label>
+                            <type>TEXT</type>
+                            <isMandatory>false</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Comma-separated list of email addresses to use as fallback if no emails are found in the transaction fields.</description>
+                        </parameter>
+                    </parameters>
+                </deployment>
+            </deployments>
+        </script>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Business Extension/Map_Reduce/bex_mr_auto_fulfill_bill_so.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Auto Fulfill and Bill Sales Orders</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <parameters>
+                        <parameter>
+                            <id>custscript_bex_so_fb_saved_search</id>
+                            <label>Sales Order Search (Optional)</label>
+                            <type>TEXT</type>
+                            <isMandatory>false</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Optional saved search ID to source Sales Orders. If empty, the script builds a search at runtime.</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_so_fb_status</id>
+                            <label>Sales Order Status</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>SalesOrd:B</defaultValue>
+                            <description>Sales Order internal status filter. Default SalesOrd:B (Pending Fulfillment).</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_so_fb_location</id>
+                            <label>Fulfillment Location (Optional)</label>
+                            <type>TEXT</type>
+                            <isMandatory>false</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Optional location internal ID to set on Item Fulfillment.</description>
+                        </parameter>
+                    </parameters>
+                </deployment>
+            </deployments>
+        </script>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Business Extension/User_Event/bex_ue_so_auto_fulfill_bill.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Sales Order Auto Fulfill and Bill - afterSubmit</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <scriptEvents>
+                        <scriptEvent>
+                            <eventType>AFTER_SUBMIT</eventType>
+                            <recordType>salesorder</recordType>
+                        </scriptEvent>
+                    </scriptEvents>
+                    <parameters>
+                        <parameter>
+                            <id>custscript_bex_ue_so_fb_enabled</id>
+                            <label>Enable Script</label>
+                            <type>CHECKBOX</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>T</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ue_so_fb_enable_fulfill</id>
+                            <label>Enable Auto Fulfillment</label>
+                            <type>CHECKBOX</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>T</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ue_so_fb_enable_bill</id>
+                            <label>Enable Auto Billing</label>
+                            <type>CHECKBOX</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>T</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ue_so_fb_approved_status</id>
+                            <label>Approved Status Value</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>2</defaultValue>
+                            <description>Sales Order approval status value to process. Default is 2 (Approved).</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ue_so_fb_location</id>
+                            <label>Fulfillment Location (Optional)</label>
+                            <type>TEXT</type>
+                            <isMandatory>false</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Optional location internal ID to set on Item Fulfillment.</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ue_so_fb_shipstatus</id>
+                            <label>Item Fulfillment Ship Status</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>C</defaultValue>
+                            <description>Ship status value for Item Fulfillment. Default C (Shipped).</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ue_so_fb_allow_partial</id>
+                            <label>Allow Partial Fulfillment</label>
+                            <type>CHECKBOX</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>T</defaultValue>
+                            <description>If enabled, fulfills only available quantities for each line.</description>
+                        </parameter>
+                    </parameters>
+                </deployment>
+            </deployments>
+        </script>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Business Extension/Suitelet/bex_sl_overdue_invoice_reminder.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Overdue Invoice Reminder Suitelet</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <parameters>
+                        <parameter>
+                            <id>custscript_bex_overdue_sender</id>
+                            <label>Email Sender Employee</label>
+                            <type>TEXT</type>
+                            <isMandatory>false</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Optional employee internal ID used as email sender. If blank, current user is used.</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_overdue_email_subject</id>
+                            <label>Email Subject Template</label>
+                            <type>TEXT</type>
+                            <isMandatory>false</isMandatory>
+                            <defaultValue>Overdue Invoice Reminder - {{customerName}}</defaultValue>
+                            <description>Template tokens: {{customerName}}, {{invoiceCount}}, {{totalOverdue}}.</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_overdue_email_body</id>
+                            <label>Email Body Template</label>
+                            <type>TEXTAREA</type>
+                            <isMandatory>false</isMandatory>
+                            <defaultValue>Dear {{customerName}},
+
+This is a reminder that you have {{invoiceCount}} overdue invoice(s) with a total outstanding amount of {{totalOverdue}}.
+
+{{invoiceSummary}}
+
+Please settle these overdue balances at your earliest convenience.
+
+Thank you.</defaultValue>
+                            <description>Template tokens: {{customerName}}, {{invoiceCount}}, {{totalOverdue}}, {{invoiceSummary}}.</description>
+                        </parameter>
+                    </parameters>
+                </deployment>
+            </deployments>
+        </script>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Business Extension/Workflow_Action/bex_wfa_case_escalation_parent_status.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Case Escalation - Sync Parent Case Status</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <recordType>customrecord_bex_case_escalation</recordType>
+                    <parameters>
+                        <parameter>
+                            <id>custscript_bex_ce_rec_type</id>
+                            <label>Escalation Record Type</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>customrecord_bex_case_escalation</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_parent_case_field</id>
+                            <label>Parent Case Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_parent_case</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_status_field</id>
+                            <label>Escalation Status Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_status</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_status_escalated</id>
+                            <label>Escalated Status Value</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Internal ID of the Escalation Status list value for "Escalated".</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_case_status_field</id>
+                            <label>Parent Case Status Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>status</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_case_status_escalated</id>
+                            <label>Parent Case Escalated Status Value</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Internal ID of the Support Case status value to use when escalated.</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_case_status_inprog</id>
+                            <label>Parent Case In Progress Status Value</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Internal ID of the Support Case status value to use when all escalations are de-escalated.</description>
+                        </parameter>
+                    </parameters>
+                </deployment>
+            </deployments>
+        </script>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Business Extension/Workflow_Action/bex_wfa_case_escalation_notify_internal.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Case Escalation - Notify Internal Escalatee</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <recordType>customrecord_bex_case_escalation</recordType>
+                    <parameters>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_type_field</id>
+                            <label>Escalation Type Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_type</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_internal_type</id>
+                            <label>Internal Escalation Type Value</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Internal ID of the Escalation Type list value for "Internal".</description>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_internal_emp_field</id>
+                            <label>Internal Escalatee Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_internal_escalatee</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_msg_field</id>
+                            <label>Escalation Message Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_message</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_parent_case_field</id>
+                            <label>Parent Case Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_parent_case</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_sender</id>
+                            <label>Notification Sender (Employee ID)</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_template</id>
+                            <label>Email Template ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                            <description>Internal ID of the Case Escalation notification template.</description>
+                        </parameter>
+                    </parameters>
+                </deployment>
+            </deployments>
+        </script>
+    </scripts>
+</deploy>

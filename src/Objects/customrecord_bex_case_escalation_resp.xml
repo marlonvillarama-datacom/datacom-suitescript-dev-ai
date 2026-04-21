@@ -1,0 +1,43 @@
+<customrecordtype scriptid="customrecord_bex_case_escalation_resp">
+    <recordname>Case Escalation Response</recordname>
+    <description>Child record of Case Escalation to store structured responses and updates.</description>
+    <isinactive>F</isinactive>
+    <includeinsearchmenu>T</includeinsearchmenu>
+    <showcreationdate>T</showcreationdate>
+    <showlastmodified>T</showlastmodified>
+    <allowattachments>T</allowattachments>
+    <allowquickadd>F</allowquickadd>
+    <showid>T</showid>
+    <shownotes>T</shownotes>
+    <customrecordcustomfields>
+        <customrecordcustomfield scriptid="custrecord_bex_cer_case_escalation">
+            <label>Case Escalation</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>T</ismandatory>
+            <isparent>T</isparent>
+            <selectrecordtype>[scriptid=customrecord_bex_case_escalation]</selectrecordtype>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_cer_message">
+            <label>Response Message</label>
+            <fieldtype>TEXT</fieldtype>
+            <ismandatory>T</ismandatory>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_cer_date">
+            <label>Response Date</label>
+            <fieldtype>DATE</fieldtype>
+            <ismandatory>T</ismandatory>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_cer_posted_by">
+            <label>Posted by</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <selectrecordtype>-4</selectrecordtype>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_cer_on_behalf">
+            <label>On behalf of</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <selectrecordtype>-4</selectrecordtype>
+        </customrecordcustomfield>
+    </customrecordcustomfields>
+</customrecordtype>

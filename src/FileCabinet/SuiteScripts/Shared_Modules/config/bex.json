@@ -1,0 +1,6 @@
+{
+    "baseUrl": "/",
+    "paths": {
+        "BEX": "/SuiteScripts/Shared_Modules/modules"
+    }
+}

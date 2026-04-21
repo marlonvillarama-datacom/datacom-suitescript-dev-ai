@@ -1,0 +1,18 @@
+<customlist scriptid="customlist_bex_escalation_type">
+    <name>Escalation Type List</name>
+    <description>Defines whether a case escalation is internal (collections) or external.</description>
+    <isinactive>F</isinactive>
+    <isordered>F</isordered>
+    <customvalues>
+        <customvalue scriptid="customvalue_bex_esc_type_internal">
+            <abbreviation>INT</abbreviation>
+            <value>Internal</value>
+            <isdefault>F</isdefault>
+        </customvalue>
+        <customvalue scriptid="customvalue_bex_esc_type_external">
+            <abbreviation>EXT</abbreviation>
+            <value>External</value>
+            <isdefault>F</isdefault>
+        </customvalue>
+    </customvalues>
+</customlist>

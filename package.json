@@ -1,0 +1,14 @@
+{
+    "name": "sc-ai-002",
+    "version": "1.0.0",
+    "description": "NetSuite SuiteScript project",
+    "scripts": {
+        "test": "jest",
+        "test:coverage": "jest --coverage"
+    },
+    "devDependencies": {
+        "@oracle/suitecloud-unit-testing": "^1.7.0",
+        "jest": "^29.0.0",
+        "jest-environment-jsdom": "^29.0.0"
+    }
+}

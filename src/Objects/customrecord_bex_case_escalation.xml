@@ -1,0 +1,78 @@
+<customrecordtype scriptid="customrecord_bex_case_escalation">
+    <recordname>Case Escalation</recordname>
+    <description>Child record of Case to track each escalation unit and lifecycle.</description>
+    <isinactive>F</isinactive>
+    <includeinsearchmenu>T</includeinsearchmenu>
+    <showcreationdate>T</showcreationdate>
+    <showlastmodified>T</showlastmodified>
+    <allowattachments>T</allowattachments>
+    <allowquickadd>F</allowquickadd>
+    <enablemailmerge>F</enablemailmerge>
+    <enablenametranslation>F</enablenametranslation>
+    <iconbuiltin>F</iconbuiltin>
+    <isordered>F</isordered>
+    <numberingmindigits>0</numberingmindigits>
+    <numberingprefix>CE-</numberingprefix>
+    <numberingsuffix></numberingsuffix>
+    <owner></owner>
+    <permissions></permissions>
+    <recordnumbering>F</recordnumbering>
+    <showid>T</showid>
+    <shownotes>T</shownotes>
+    <showowner>T</showowner>
+    <showownerallowchange>T</showownerallowchange>
+    <showowneronlist>T</showowneronlist>
+    <customrecordcustomfields>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_parent_case">
+            <label>Parent Case</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>T</ismandatory>
+            <isparent>T</isparent>
+            <selectrecordtype>-2</selectrecordtype>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_type">
+            <label>Escalation Type</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>T</ismandatory>
+            <selectrecordtype>[scriptid=customlist_bex_escalation_type]</selectrecordtype>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_internal_escalatee">
+            <label>Internal Escalatee</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <selectrecordtype>-4</selectrecordtype>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_external_escalatee">
+            <label>External Escalatee</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <selectrecordtype>-4</selectrecordtype>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_status">
+            <label>Escalation Status</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>T</ismandatory>
+            <selectrecordtype>[scriptid=customlist_bex_escalation_status]</selectrecordtype>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_message">
+            <label>Escalation Message</label>
+            <fieldtype>TEXT</fieldtype>
+            <ismandatory>T</ismandatory>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_deesc_reason">
+            <label>De-escalation Reason</label>
+            <fieldtype>TEXTAREA</fieldtype>
+            <ismandatory>F</ismandatory>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_start_date">
+            <label>Escalation Start Date</label>
+            <fieldtype>DATE</fieldtype>
+            <ismandatory>T</ismandatory>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_end_date">
+            <label>Escalation End Date</label>
+            <fieldtype>DATE</fieldtype>
+            <ismandatory>F</ismandatory>
+        </customrecordcustomfield>
+    </customrecordcustomfields>
+</customrecordtype>

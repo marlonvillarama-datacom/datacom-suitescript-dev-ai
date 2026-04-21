@@ -1,0 +1,8 @@
+{
+  "senderEmployeeId": null,
+  "emailFieldMappings": {
+    "entityEmail": "custbody_email",
+    "billingEmail": "custbody_billing_email",
+    "shippingEmail": "custbody_shipping_email"
+  }
+}

@@ -1,0 +1,23 @@
+<customlist scriptid="customlist_bex_escalation_status">
+    <name>Escalation Status</name>
+    <description>Status values used by Case Escalation records.</description>
+    <isinactive>F</isinactive>
+    <isordered>F</isordered>
+    <customvalues>
+        <customvalue scriptid="customvalue_bex_esc_status_not_escalated">
+            <abbreviation>NEW</abbreviation>
+            <value>Not Escalated</value>
+            <isdefault>T</isdefault>
+        </customvalue>
+        <customvalue scriptid="customvalue_bex_esc_status_escalated">
+            <abbreviation>ESC</abbreviation>
+            <value>Escalated</value>
+            <isdefault>F</isdefault>
+        </customvalue>
+        <customvalue scriptid="customvalue_bex_esc_status_de_escalated">
+            <abbreviation>DES</abbreviation>
+            <value>De-escalated</value>
+            <isdefault>F</isdefault>
+        </customvalue>
+    </customvalues>
+</customlist>

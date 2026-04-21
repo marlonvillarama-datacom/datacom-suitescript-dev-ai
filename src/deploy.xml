@@ -1,0 +1,6 @@
+<deploy>
+    <objects>
+        <path>~/Objects/customrecord_bex_case_escalation.xml</path>
+        <path>~/Objects/customrecord_bex_case_escalation_resp.xml</path>
+    </objects>
+</deploy>
