@@ -14,12 +14,15 @@ This skill provides best practices and guidelines for developing User Event Scri
 - Use camelCase for function and variable names (e.g., `beforeLoad`, `afterSubmit`).
 - Use descriptive names that indicate the purpose of the function or variable (e.g., `validateCustomerCreditLimit`).
 
-## Script Structure
+## Script Design and Architecture
 - Organize the script into sections: entry points (beforeLoad, beforeSubmit, afterSubmit), helper functions, and utility functions.
 - Use comments to explain the purpose of each section and important logic.
-- Keep entry point functions concise and delegate complex logic to helper functions.
 
-## User Event Script Structure
+### Governance and Performance Optimization
+- **User Event scripts have a governance limit of 1,000 points per execution.**
+- If an operation in a User Event Script is expected to exceed the governance limit, consider offloading the processing to a Map/Reduce script and invoking it asynchronously from the User Event Script using `N/task` module.
+
+### User Event Script Structure
 
 ```javascript
 /**
@@ -43,41 +46,23 @@ This skill provides best practices and guidelines for developing User Event Scri
 
 define(['N/log', 'N/record'], function(log, record) {
 
-    function beforeLoad(context) {
-        // Entry point for beforeLoad
-        // Delegate complex logic to helper functions
-        handleBeforeLoad(context);
-    }
-
-    function beforeSubmit(context) {
-        // Entry point for beforeSubmit
-        // Delegate complex logic to helper functions
-        handleBeforeSubmit(context);
-    }
-
-    function afterSubmit(context) {
-        // Entry point for afterSubmit
-        // Delegate complex logic to helper functions
-        handleAfterSubmit(context);
-    }
-
-    // Helper functions for each entry point
-    function handleBeforeLoad(context) {
-        // Complex logic for beforeLoad
-    }
-
-    function handleBeforeSubmit(context) {
-        // Complex logic for beforeSubmit
-    }
-
-    function handleAfterSubmit(context) {
-        // Complex logic for afterSubmit
-    }
+    // Helper functions for complex logic can be defined here
 
     return {
-        beforeLoad: beforeLoad,
-        beforeSubmit: beforeSubmit,
-        afterSubmit: afterSubmit
+        beforeLoad: function ({ form, newRecord, request, type }) {
+            // Entry point for beforeLoad
+            // Delegate complex logic to helper functions
+        },
+
+        beforeSubmit: function ({ newRecord, oldRecord, type }) {
+            // Entry point for beforeSubmit
+            // Delegate complex logic to helper functions
+        },
+
+        afterSubmit: function ({ newRecord, oldRecord, type }) {
+            // Entry point for afterSubmit
+            // Delegate complex logic to helper functions
+        }
     };
 });
 ```

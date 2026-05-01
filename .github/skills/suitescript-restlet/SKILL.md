@@ -1,34 +1,35 @@
 ---
-name: suitescript-suitelet
-description: Use this skill to design and develop Suitelet Scripts in NetSuite using SuiteScript, following best practices and guidelines for coding conventions, architecture, and performance optimization.
+name: suitescript-restlet
+description: Use this skill to design and develop Restlet Scripts in NetSuite using SuiteScript, following best practices and guidelines for coding conventions, architecture, and performance optimization.
 ---
 
-# SuiteScript Suitelet Script Development
+# SuiteScript Restlet Script Development
 
-This skill provides best practices and guidelines for developing Suitelet Scripts in NetSuite using SuiteScript. It covers coding conventions, architecture guidelines, and performance optimization techniques to help developers create efficient and maintainable Suitelet Scripts.
+This skill provides best practices and guidelines for developing Restlet Scripts in NetSuite using SuiteScript. It covers coding conventions, architecture guidelines, and performance optimization techniques to help developers create efficient and maintainable Restlet Scripts.
 
 ## Naming Conventions
 
-- Use only SuiteScript 2.1 API for Suitelet Scripts.
-- Use the prefix `bex_sl_` for Suitelet Script files (e.g., `sl_salesorder.js`).
-- Use camelCase for function and variable names (e.g., `onRequest`).
-- Use descriptive names that indicate the purpose of the function or variable (e.g., `renderCustomerForm`).
+- Use only SuiteScript 2.1 API for Restlet Scripts.
+- Use the prefix `bex_rl_` for Restlet Script files (e.g., `rl_salesorder.js`).
+- Use camelCase for function and variable names (e.g., `get`, `post`).
+- Use descriptive names that indicate the purpose of the function or variable (e.g., `getCustomerData`).
 
 ## Script Design and Architecture
-- Organize the script into sections: entry points (onRequest), helper functions, and utility functions.
+- Organize the script into sections: entry points (get, post, put, delete), helper functions, and utility functions.
 - Use comments to explain the purpose of each section and important logic.
 
 ### Governance and Performance Optimization
-- **Suitelets have a governance limit of 1,000 points per execution.**
+- **Restlets have a governance limit of 5,000 points per execution.**
+- The maximum size of a RESTlet string response is 10MB. If more data needs to be returned, consider paginating the response or implementing a different design approach, such as having the RESTlet write the data to a file and return a link to the file instead.
 
-## Suitelet Script Structure
+## Restlet Script Structure
 
 ```javascript
 /**
  * @NAmdConfig              /SuiteScripts/Shared_Modules/config/bex.json
  * @NApiVersion             2.x
  * @NModuleScope            SameAccount
- * @NScriptType             Suitelet
+ * @NScriptType             Restlet
  *
  * Copyright (c) 2026 Datacom, Inc.
  * All Rights Reserved.
@@ -36,7 +37,7 @@ This skill provides best practices and guidelines for developing Suitelet Script
  * This software is the confidential and proprietary information of
  * Datacom, Inc. ("Confidential Information").
  *
- * @description             Suitelet description goes here...
+ * @description             Restlet description goes here...
  *
  * ===================================================================================================
  * Date                 Author                              Notes
@@ -49,15 +50,27 @@ define(['N/log', 'N/record'], function(log, record) {
     // Helper functions for complex logic can be defined here
 
     return {
-        onRequest: function (context) {
-            // Entry point for onRequest
+        get: function (context) {
+            // Entry point for GET requests
+            // Delegate complex logic to helper functions
+        },
+        post: function (context) {
+            // Entry point for POST requests
+            // Delegate complex logic to helper functions
+        },
+        put: function (context) {
+            // Entry point for PUT requests
+            // Delegate complex logic to helper functions
+        },
+        delete: function (context) {
+            // Entry point for DELETE requests
             // Delegate complex logic to helper functions
         }
     };
 });
 ```
 
-## Design Considerations (Front-end Suitelets)
+## Design Considerations
 - Front-end Suitelets should only implement GET requests to render forms and display data. For any data processing or manipulation, create a corresponding back-end Suitelet that handles POST requests.
 - When large datasets are involved, implement pagination or lazy loading techniques to improve performance and user experience.
 - Create a corresponding client script file to handle client-side interactions, validations, and button actions.
@@ -74,5 +87,5 @@ define(['N/log', 'N/record'], function(log, record) {
 - Focus on efficient data processing and ensure that the script can handle large volumes of data without performance degradation.
 - Implement error handling and logging to facilitate debugging and maintenance of the Suitelet Script.
 
-## Suitelet Script Best Practices
-- Refer to the following page for recommended best practices and guidelines for Suitelet Script development in NetSuite: [Suitelet Script Best Practices](https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_N3361453.html).
+## Restlet Script Best Practices
+- Refer to the following page for recommended best practices and guidelines for Restlet Script development in NetSuite: [Suitelet Script Best Practices](https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_N3361453.html).

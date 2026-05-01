@@ -14,10 +14,17 @@ This skill provides best practices and guidelines for developing Map/Reduce Scri
 - Use camelCase for function and variable names (e.g., `getInputData`, `map`, `reduce`, `summarize`).
 - Use descriptive names that indicate the purpose of the function or variable (e.g., `processCustomerOrders`).
 
-## Script Structure
+## Script Design and Architecture
 - Organize the script into sections: entry points (getInputData, map, reduce, summarize), helper functions, and utility functions.
 - Use comments to explain the purpose of each section and important logic.
 - Keep entry point functions concise and delegate complex logic to helper functions.
+
+### Governance and Performance Optimization
+- Always be mindful of the following governance limits for each map/reduce stage:
+    - getInputData: 10,000 API usage points
+    - map: 1,000 API usage points per execution
+    - reduce: 5,000 API usage points per execution
+    - summarize: 10,000 API usage points
 
 ## Map/Reduce Script Structure
 
@@ -30,52 +37,30 @@ This skill provides best practices and guidelines for developing Map/Reduce Scri
  */
 define(['N/log', 'N/record'], function(log, record) {
 
-    function getInputData(context) {
-        // Entry point for getInputData
-        // Delegate complex logic to helper functions
-        handleGetInputData(context);
-    }
-
-    function map(context) {
-        // Entry point for map
-        // Delegate complex logic to helper functions
-        handleMap(context);
-    }
-
-    function reduce(context) {
-        // Entry point for reduce
-        // Delegate complex logic to helper functions
-        handleReduce(context);
-    }
-
-    function summarize(context) {
-        // Entry point for summarize
-        // Delegate complex logic to helper functions
-        handleSummarize(context);
-    }
-
-    // Helper functions for each entry point
-    function handleGetInputData(context) {
-        // Complex logic for getInputData
-    }
-
-    function handleMap(context) {
-        // Complex logic for map
-    }
-
-    function handleReduce(context) {
-        // Complex logic for reduce
-    }
-
-    function handleSummarize(context) {
-        // Complex logic for summarize
-    }
+    // Helper functions for complex logic can be defined here
 
     return {
-        getInputData: getInputData,
-        map: map,
-        reduce: reduce,
-        summarize: summarize
+        getInputData: function () {
+            // Entry point for getInputData
+            // Delegate complex logic to helper functions
+        },
+
+        map: function (context) {
+            let { key, value } = context;
+            // Entry point for map
+            // Delegate complex logic to helper functions
+        },
+
+        reduce: function (context) {
+            let { key, values } = context;
+            // Entry point for reduce
+            // Delegate complex logic to helper functions
+        },
+
+        summarize: function ({ mapSummary, reduceSummary, output, errors }) {
+            // Entry point for summarize
+            // Delegate complex logic to helper functions
+        }
     };
 });
 ```
