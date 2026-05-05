@@ -36,6 +36,18 @@
             <ismandatory>T</ismandatory>
             <selectrecordtype>[scriptid=customlist_bex_escalation_type]</selectrecordtype>
         </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_employee">
+            <label>Employee</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>T</ismandatory>
+            <selectrecordtype>-4</selectrecordtype>
+        </customrecordcustomfield>
+        <customrecordcustomfield scriptid="custrecord_bex_ce_escalatee">
+            <label>Escalatee</label>
+            <fieldtype>SELECT</fieldtype>
+            <ismandatory>T</ismandatory>
+            <selectrecordtype>-4</selectrecordtype>
+        </customrecordcustomfield>
         <customrecordcustomfield scriptid="custrecord_bex_ce_internal_escalatee">
             <label>Internal Escalatee</label>
             <fieldtype>SELECT</fieldtype>

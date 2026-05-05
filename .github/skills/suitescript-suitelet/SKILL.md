@@ -10,7 +10,7 @@ This skill provides best practices and guidelines for developing Suitelet Script
 ## Naming Conventions
 
 - Use only SuiteScript 2.1 API for Suitelet Scripts.
-- Use the prefix `bex_sl_` for Suitelet Script files (e.g., `sl_salesorder.js`).
+- Use the prefix `bex_sl_` for Suitelet Script files (e.g., `bex_sl_salesorder.js`).
 - Use camelCase for function and variable names (e.g., `onRequest`).
 - Use descriptive names that indicate the purpose of the function or variable (e.g., `renderCustomerForm`).
 
@@ -18,8 +18,8 @@ This skill provides best practices and guidelines for developing Suitelet Script
 - Organize the script into sections: entry points (onRequest), helper functions, and utility functions.
 - Use comments to explain the purpose of each section and important logic.
 
-### Governance and Performance Optimization
-- **Suitelets have a governance limit of 1,000 points per execution.**
+### Entry Point Definitions and Context
+- `onRequest`: Entry point for handling incoming requests to the Suitelet. This function is executed whenever the Suitelet is accessed and should contain the logic for processing the request and generating the appropriate response. Depending on the request method (GET or POST), the logic within this function may vary. For GET requests, the function should focus on rendering forms and displaying data, while for POST requests, it should handle data processing and manipulation.
 
 ## Suitelet Script Structure
 
@@ -44,17 +44,56 @@ This skill provides best practices and guidelines for developing Suitelet Script
  *
  */
  
-define(['N/log', 'N/record'], function(log, record) {
+define(['N/record'], function(record) {
 
     // Helper functions for complex logic can be defined here
 
     return {
+        /**
+         * @param {Object} context
+         * @param {Request} context.request - The request object containing request information
+         * @param {Response} context.response - The response object used to send responses back to the client
+         */
         onRequest: function (context) {
+            let { request, response } = context;
             // Entry point for onRequest
             // Delegate complex logic to helper functions
         }
     };
 });
+```
+
+### Governance and Performance Optimization
+- **Suitelets have a governance limit of 1,000 points per execution.**
+
+## Deployment
+- Use the following XML structure to deploy the Suitelet Script in NetSuite using SDF:
+
+```xml
+<suitelet scriptid="customscript_suitelet_example">
+    <name>Suitelet Example</name>
+    <notifyowner>T</notifyowner>
+    <scriptfile>[/SuiteScripts/SuiteletScript.js]</scriptfile>
+    <scriptcustomfields>
+        <scriptcustomfield scriptid="custscript_suitelet_custom_field">
+            <displaytype>NORMAL</displaytype>
+            <fieldtype>TEXT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <label>Suitelet Custom Field</label>
+            <selectrecordtype>Suitelet Custom Field</selectrecordtype>
+            <storevalue>T</storevalue>
+        </scriptcustomfield>
+    </scriptcustomfields>
+   <scriptdeployments>
+        <scriptdeployment scriptid="customdeploy_suitelet_example">
+            <isonline>F</isonline>
+             <status>TESTING</status>
+            <runasrole>ADMINISTRATOR</runasrole>
+            <status>TESTING</status>
+            <title>Suitelet Example Deployment</title>
+        </scriptdeployment>
+    </scriptdeployments>
+</suitelet>
 ```
 
 ## Design Considerations (Front-end Suitelets)

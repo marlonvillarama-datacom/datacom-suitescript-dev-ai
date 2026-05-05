@@ -1,6 +1,141 @@
 <deploy>
+    <files>
+        <path>~/FileCabinet/SuiteScripts/Case_Escalation/*</path>
+    </files>
     <objects>
         <path>~/Objects/customrecord_bex_case_escalation.xml</path>
         <path>~/Objects/customrecord_bex_case_escalation_resp.xml</path>
+        <path>~/Objects/customlist_bex_escalation_type.xml</path>
+        <path>~/Objects/customlist_bex_escalation_status.xml</path>
     </objects>
+    <scripts>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Case_Escalation/case_escalation_client.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Case Escalation Client Script</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <recordType>customrecord_bex_case_escalation</recordType>
+                </deployment>
+            </deployments>
+        </script>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Case_Escalation/case_escalation_wfa_sync_case_status.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Case Escalation - Sync Parent Case Status</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <recordType>customrecord_bex_case_escalation</recordType>
+                    <parameters>
+                        <parameter>
+                            <id>custscript_bex_ce_rec_type</id>
+                            <label>Escalation Record Type</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>customrecord_bex_case_escalation</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_parent_case_field</id>
+                            <label>Parent Case Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_parent_case</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_status_field</id>
+                            <label>Escalation Status Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_status</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_status_escalated</id>
+                            <label>Escalated Status Value</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_case_status_field</id>
+                            <label>Parent Case Status Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>status</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_case_status_escalated</id>
+                            <label>Parent Case Escalated Status Value</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_case_status_inprog</id>
+                            <label>Parent Case In Progress Status Value</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                        </parameter>
+                    </parameters>
+                </deployment>
+            </deployments>
+        </script>
+        <script>
+            <filePath>~/FileCabinet/SuiteScripts/Case_Escalation/case_escalation_wfa_notify_internal.js</filePath>
+            <deployments>
+                <deployment>
+                    <title>Case Escalation - Notify Internal Escalatee</title>
+                    <isDeployed>true</isDeployed>
+                    <loglevel>DEBUG</loglevel>
+                    <recordType>customrecord_bex_case_escalation</recordType>
+                    <parameters>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_type_field</id>
+                            <label>Escalation Type Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_type</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_internal_type</id>
+                            <label>Internal Escalation Type Value</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_internal_emp_field</id>
+                            <label>Escalatee Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_escalatee</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_msg_field</id>
+                            <label>Escalation Message Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_message</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_parent_case_field</id>
+                            <label>Parent Case Field ID</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue>custrecord_bex_ce_parent_case</defaultValue>
+                        </parameter>
+                        <parameter>
+                            <id>custscript_bex_ce_notify_sender</id>
+                            <label>Notification Sender (Employee ID)</label>
+                            <type>TEXT</type>
+                            <isMandatory>true</isMandatory>
+                            <defaultValue></defaultValue>
+                        </parameter>
+                    </parameters>
+                </deployment>
+            </deployments>
+        </script>
+    </scripts>
 </deploy>
