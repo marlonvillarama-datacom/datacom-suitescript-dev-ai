@@ -1,0 +1,15 @@
+<entitycustomfield scriptid="custentity_bex_vend_rejection_reason">
+    <label>Rejection Reason</label>
+    <fieldtype>TEXTAREA</fieldtype>
+    <ismandatory>F</ismandatory>
+    <storevalue>T</storevalue>
+    <showinfieldgroup>F</showinfieldgroup>
+    <showinlist>F</showinlist>
+    <appliestoperson>F</appliestoperson>
+    <appliestocontact>F</appliestocontact>
+    <appliestocustomer>F</appliestocustomer>
+    <appliestoemployee>F</appliestoemployee>
+    <appliestoothername>F</appliestoothername>
+    <appliestopartner>F</appliestopartner>
+    <appliestovendor>T</appliestovendor>
+</entitycustomfield>

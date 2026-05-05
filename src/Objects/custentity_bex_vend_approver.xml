@@ -1,0 +1,17 @@
+<entitycustomfield scriptid="custentity_bex_vend_approver">
+    <label>Approver</label>
+    <fieldtype>SELECT</fieldtype>
+    <ismandatory>F</ismandatory>
+    <storevalue>T</storevalue>
+    <showinfieldgroup>F</showinfieldgroup>
+    <showinlist>F</showinlist>
+    <!-- selectrecordtype -4 = Employee -->
+    <selectrecordtype>-4</selectrecordtype>
+    <appliestoperson>F</appliestoperson>
+    <appliestocontact>F</appliestocontact>
+    <appliestocustomer>F</appliestocustomer>
+    <appliestoemployee>F</appliestoemployee>
+    <appliestoothername>F</appliestoothername>
+    <appliestopartner>F</appliestopartner>
+    <appliestovendor>T</appliestovendor>
+</entitycustomfield>

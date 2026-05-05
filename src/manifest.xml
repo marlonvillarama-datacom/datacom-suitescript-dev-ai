@@ -6,10 +6,18 @@
       <feature required="false">MULTILANGUAGE</feature>
       <feature required="false">MAILMERGE</feature>
       <feature required="true">CUSTOMRECORDS</feature>
+      <!-- Required for record.Type.SUPPORT_CASE and Support Case search/submit -->
+      <feature required="true">CASEMGMT</feature>
     </features>
     <objects>
+      <!-- Custom lists referenced as SELECT field sources in the escalation record -->
       <object>customlist_bex_escalation_type</object>
       <object>customlist_bex_escalation_status</object>
+      <!-- Custom records that the script objects deploy against -->
+      <object>customrecord_bex_case_escalation</object>
+      <object>customrecord_bex_case_escalation_resp</object>
+      <!-- Vendor Approval -->
+      <object>customlist_bex_vendor_approval_status</object>
     </objects>
   </dependencies>
 </manifest>

@@ -1,0 +1,49 @@
+<usereventscript scriptid="customscript_bex_ue_vendor_approval">
+    <name>BEX UE Vendor Approval</name>
+    <notifyowner>T</notifyowner>
+    <scriptfile>[/SuiteScripts/Vendor_Approval/bex_ue_vendor_approval.js]</scriptfile>
+    <scriptcustomfields>
+        <!-- Internal ID of the "Pending" approval status list value (account-specific). REQUIRED. -->
+        <scriptcustomfield scriptid="custscript_bex_ue_vend_pending_status">
+            <displaytype>NORMAL</displaytype>
+            <fieldtype>TEXT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <label>Pending Status Internal ID</label>
+            <storevalue>T</storevalue>
+        </scriptcustomfield>
+        <!-- Internal ID of the "Approved" approval status list value (account-specific). REQUIRED. -->
+        <scriptcustomfield scriptid="custscript_bex_ue_vend_approved_status">
+            <displaytype>NORMAL</displaytype>
+            <fieldtype>TEXT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <label>Approved Status Internal ID</label>
+            <storevalue>T</storevalue>
+        </scriptcustomfield>
+        <!-- Internal ID of the "Rejected" approval status list value (account-specific). REQUIRED. -->
+        <scriptcustomfield scriptid="custscript_bex_ue_vend_rejected_status">
+            <displaytype>NORMAL</displaytype>
+            <fieldtype>TEXT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <label>Rejected Status Internal ID</label>
+            <storevalue>T</storevalue>
+        </scriptcustomfield>
+        <!-- Internal ID of the administrator/bypass role. Users with this role bypass the pending-edit lock.
+             Defaults to role 3 (Administrator) if left blank. -->
+        <scriptcustomfield scriptid="custscript_bex_ue_vend_bypass_role">
+            <displaytype>NORMAL</displaytype>
+            <fieldtype>TEXT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <label>Admin Bypass Role Internal ID</label>
+            <storevalue>T</storevalue>
+        </scriptcustomfield>
+    </scriptcustomfields>
+    <scriptdeployments>
+        <scriptdeployment scriptid="customdeploy_bex_ue_vendor_approval">
+            <recordtype>VENDOR</recordtype>
+            <status>TESTING</status>
+            <title>BEX UE Vendor Approval</title>
+            <allroles>T</allroles>
+            <loglevel>DEBUG</loglevel>
+        </scriptdeployment>
+    </scriptdeployments>
+</usereventscript>

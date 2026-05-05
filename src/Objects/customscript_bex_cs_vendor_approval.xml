@@ -1,0 +1,32 @@
+<clientscript scriptid="customscript_bex_cs_vendor_approval">
+    <name>BEX CS Vendor Approval</name>
+    <notifyowner>T</notifyowner>
+    <scriptfile>[/SuiteScripts/Vendor_Approval/bex_cs_vendor_approval.js]</scriptfile>
+    <scriptcustomfields>
+        <!-- Internal ID of the "Approved" approval status list value (account-specific). REQUIRED. -->
+        <scriptcustomfield scriptid="custscript_bex_cs_vend_approved_status">
+            <displaytype>NORMAL</displaytype>
+            <fieldtype>TEXT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <label>Approved Status Internal ID</label>
+            <storevalue>T</storevalue>
+        </scriptcustomfield>
+        <!-- Internal ID of the "Rejected" approval status list value (account-specific). REQUIRED. -->
+        <scriptcustomfield scriptid="custscript_bex_cs_vend_rejected_status">
+            <displaytype>NORMAL</displaytype>
+            <fieldtype>TEXT</fieldtype>
+            <ismandatory>F</ismandatory>
+            <label>Rejected Status Internal ID</label>
+            <storevalue>T</storevalue>
+        </scriptcustomfield>
+    </scriptcustomfields>
+    <scriptdeployments>
+        <scriptdeployment scriptid="customdeploy_bex_cs_vendor_approval">
+            <recordtype>VENDOR</recordtype>
+            <status>TESTING</status>
+            <title>BEX CS Vendor Approval</title>
+            <allroles>T</allroles>
+            <loglevel>DEBUG</loglevel>
+        </scriptdeployment>
+    </scriptdeployments>
+</clientscript>
