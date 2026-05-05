@@ -5,6 +5,7 @@ This repository contains instructions and skills files necessary to quickly buil
 |No.|Notes|
 |---|-----|
 |0.1|MVP|
+|0.2|Updated skill files for Client, UE, Map/Reduce, and Suitelet scripts|
 
 ## Installation
 
