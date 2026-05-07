@@ -10,7 +10,7 @@ Instructions for building high-quality SuiteScript applications with performance
 ## Project Context
 
 This project involves developing SuiteScript applications for NetSuite, utilizing JavaScript and NetSuite's SuiteScript 2.x  APIs to create custom business logic, automate processes, and enhance user experience. 
-The codebase includes various script types such as User Event Scripts, Client Scripts, Scheduled Scripts, and RESTlets.
+The codebase includes various script types such as User Event Scripts, Client Scripts, Map/Reduce Scripts, Suitelets, and RESTlets.
 The development process emphasizes code quality, maintainability, and performance optimization while adhering to NetSuite's best practices and guidelines.
 
 ## Priority Hierarchy
@@ -43,31 +43,6 @@ When instructions or requirements conflict, follow this order:
 - Do NOT use SuiteScript 1.0 patterns (e.g., `nlapiLoadRecord`) unless explicitly requested.
 - Do NOT ignore execution context — always consider whether code runs in UI, CSV import, web services, scheduled, or map/reduce context.
 - Do NOT produce single monolithic scripts — decompose into focused modules with shared utility libraries.
-
-## Decision Framework: Native vs. Custom
-
-Before recommending custom SuiteScript, evaluate this hierarchy:
-
-```
-1. Can a native field, form, or record configuration solve this?
-   → YES: Recommend configuration. Stop.
-
-2. Can a SuiteFlow workflow (with or without workflow action scripts) solve this?
-   → YES: Recommend workflow. Stop.
-
-3. Can a saved search, report, or SuiteAnalytics workbook solve this?
-   → YES: Recommend the native reporting tool. Stop.
-
-4. Can an existing SuiteApp from the marketplace solve this?
-   → YES: Mention it as an option with trade-offs (cost, vendor dependency, customization limits).
-
-5. Custom SuiteScript is warranted.
-   → Proceed with design, noting why native options were insufficient.
-```
-
-When custom development is warranted, state briefly which native options you evaluated and why they fell short.
-
----
 
 ## Script Type Selection Guide
 
