@@ -16,8 +16,6 @@
       <!-- Custom records that the script objects deploy against -->
       <object>customrecord_bex_case_escalation</object>
       <object>customrecord_bex_case_escalation_resp</object>
-      <!-- Vendor Approval -->
-      <object>customlist_bex_vendor_approval_status</object>
     </objects>
   </dependencies>
 </manifest>

@@ -1,37 +1,11 @@
 <deploy>
     <files>
         <path>~/FileCabinet/SuiteScripts/Case_Escalation/*</path>
-        <path>~/FileCabinet/SuiteScripts/Vendor_Approval/*</path>
-        <path>~/FileCabinet/SuiteScripts/Shared_Modules/config/bex.json</path>
-        <path>~/FileCabinet/SuiteScripts/Shared_Modules/modules/params.js</path>
-        <path>~/FileCabinet/SuiteScripts/Shared_Modules/modules/search.js</path>
-        <path>~/FileCabinet/SuiteScripts/Shared_Modules/modules/search2.js</path>
-        <path>~/FileCabinet/SuiteScripts/Shared_Modules/modules/ui.js</path>
-        <path>~/FileCabinet/SuiteScripts/Shared_Modules/modules/strings.js</path>
-        <path>~/FileCabinet/SuiteScripts/Shared_Modules/modules/runtime.js</path>
     </files>
     <objects>
-        <!-- Custom Lists (deployed first — referenced by the custom record) -->
-        <path>~/Objects/customlist_bex_escalation_type.xml</path>
-        <path>~/Objects/customlist_bex_escalation_status.xml</path>
-        <!-- Custom Records -->
         <path>~/Objects/customrecord_bex_case_escalation.xml</path>
         <path>~/Objects/customrecord_bex_case_escalation_resp.xml</path>
-        <!-- Scripts
-             NOTE: Script parameters containing account-specific list value internal IDs
-             (e.g., custscript_bex_cs_ce_deescalated_status) must be set manually in the
-             target account after deployment. -->
-        <path>~/Objects/customscript_bex_cs_case_escalation.xml</path>
-        <path>~/Objects/customscript_bex_ue_case_escalation_guard.xml</path>
-        <path>~/Objects/customscript_bex_wfa_ce_sync_status.xml</path>
-        <path>~/Objects/customscript_bex_wfa_ce_notify_internal.xml</path>
-        <!-- Vendor Approval -->
-        <path>~/Objects/customlist_bex_vendor_approval_status.xml</path>
-        <path>~/Objects/custentity_bex_vend_approval_status.xml</path>
-        <path>~/Objects/custentity_bex_vend_approver.xml</path>
-        <path>~/Objects/custentity_bex_vend_submitted_by.xml</path>
-        <path>~/Objects/custentity_bex_vend_rejection_reason.xml</path>
-        <path>~/Objects/customscript_bex_ue_vendor_approval.xml</path>
-        <path>~/Objects/customscript_bex_cs_vendor_approval.xml</path>
+        <path>~/Objects/customlist_bex_escalation_type.xml</path>
+        <path>~/Objects/customlist_bex_escalation_status.xml</path>
     </objects>
 </deploy>

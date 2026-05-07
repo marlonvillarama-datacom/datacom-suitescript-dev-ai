@@ -14,8 +14,8 @@
 
 ## Case Escalation Requirements
 
-- Each case escalation must be recorded and linked to the parent case record. The employee who created the escalation is designated as the owner of the escalation.
-- Only the escalation owner should have the ability to update the escalation details or add notes.
+- Each case escalation must be recorded and linked to the parent case record.
+- Only employees with specific roles have the ability to update the escalation details or add notes.
 - Each case escalation must contain the following required details:
     - Start Date - This is the date the escalation was created.
     - End Date - This is the date when the "De-escalate" button was clicked.
@@ -28,6 +28,3 @@
 - Individual case escalations may be "de-escalated" by clicking a button. A reason must be recorded on the escalation record.
 - If a case has no active escalations, the case status should be "In Progress".
 
-## Design Considerations
-
-- Prefer using workflows over SuiteScript whenever possible. If any workflow SDF structure cannot be built reliably, document the workflow's proposed design/functionality by including all proposed states, actions, and transitions.

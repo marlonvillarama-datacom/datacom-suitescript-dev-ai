@@ -1,6 +1,6 @@
 ---
 name: solution-design-workflow
-display_name: Solution Design Workflow
+description: Solution Design Workflow
 ---
 
 # Workflow Development
